@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aimane Zougagh - CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#1a1a1a;
+    --gold:#a8842c;
+    --gold-light:#cfa84a;
+    --blue:#2457a5;
+    --white:#ffffff;
+    --gray-bg:#f7f6f3;
+    --gray-text:#5a5a5a;
+    --border:#e4e1d8;
+    --badge-bg:#eef3fb;
+    --shadow:rgba(26,26,26,0.08);
+  }
+
+  html[data-theme="dark"] {
+    --black:#f1f1f1;
+    --gold:#d4af6a;
+    --gold-light:#e3c78a;
+    --blue:#6fb1f0;
+    --white:#121212;
+    --gray-bg:#1c1c1c;
+    --gray-text:#b0b0b0;
+    --border:#2c2c2c;
+    --badge-bg:#16263b;
+    --shadow:rgba(0,0,0,0.45);
+  }
+
+  html, body { transition:background-color 0.4s ease, color 0.4s ease; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Montserrat', sans-serif;
+    background:var(--white);
+    color:var(--black);
+    line-height:1.65;
+    scroll-behavior:smooth;
+  }
+
+  a { color:var(--blue); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  /* Header */
+  header {
+    background:var(--white);
+    border-bottom:3px solid var(--gold);
+    padding:60px 20px 40px;
+    transition:background-color 0.4s ease, border-color 0.4s ease;
+  }
+
+  .header-inner {
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+
+  /* Photo placeholder */
+  .photo-frame {
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:3px solid var(--gold);
+    background:var(--gray-bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .photo-frame svg { width:62%; height:62%; opacity:0.35; }
+  /* Om je eigen foto te gebruiken: vervang de <div class="photo-frame">...</div>
+     hieronder door:  <img src="jouw-foto.jpg" alt="Aimane Zougagh" class="photo-img"> */
+  .photo-img {
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:3px solid var(--gold);
+    object-fit:cover;
+    flex-shrink:0;
+  }
+
+  .header-text { flex:1; min-width:240px; }
+
+  header h1 {
+    font-size:2.4em;
+    font-weight:700;
+    color:var(--black);
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+
+  header .role {
+    color:var(--gold);
+    font-weight:600;
+    font-size:1em;
+    margin-bottom:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+
+  header p.tagline {
+    color:var(--gray-text);
+    max-width:560px;
+    font-size:0.98em;
+    margin-bottom:18px;
+  }
+
+  .button-row { display:flex; gap:14px; flex-wrap:wrap; }
+
+  a.button {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 24px;
+    border-radius:4px;
+    font-weight:600;
+    font-size:0.92em;
+    transition:0.2s ease;
+  }
+
+  a.button.primary {
+    background:var(--black);
+    color:var(--white);
+  }
+  a.button.primary:hover { background:var(--gold); text-decoration:none; }
+
+  a.button.secondary {
+    background:var(--white);
+    color:var(--blue);
+    border:1.5px solid var(--blue);
+  }
+  a.button.secondary:hover { background:var(--blue); color:var(--white); text-decoration:none; }
+
+  /* Sections */
+  section {
+    padding:50px 20px;
+    max-width:900px;
+    margin:auto;
+  }
+
+  section h2 {
+    color:var(--black);
+    font-size:1.3em;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:28px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--gold);
+    display:inline-block;
+  }
+
+  .card {
+    background:var(--white);
+    border:1px solid var(--border);
+    border-left:4px solid var(--gold);
+    padding:24px 28px;
+    margin-bottom:18px;
+    border-radius:4px;
+    transition:background-color 0.4s ease, border-color 0.4s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    opacity:0;
+    transform:translateY(16px);
+  }
+
+  .card.visible { opacity:1; transform:translateY(0); }
+
+  .card:hover {
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px var(--shadow);
+    border-left-color:var(--blue);
+  }
+
+  .card h3 {
+    color:var(--black);
+    font-size:1.1em;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
+  .card .meta {
+    color:var(--blue);
+    font-size:0.88em;
+    font-weight:500;
+    margin-bottom:10px;
+  }
+
+  .card ul { padding-left:20px; }
+  .card li { color:var(--gray-text); font-size:0.95em; margin-bottom:4px; }
+
+  .status-behaald {
+    display:inline-block;
+    margin-top:6px;
+    padding:3px 12px;
+    background:var(--badge-bg);
+    border:1px solid var(--blue);
+    color:var(--blue);
+    border-radius:3px;
+    font-size:0.78em;
+    font-weight:700;
+    letter-spacing:0.3px;
+    transition:background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* Skill bars */
+  .skill-bar { margin-bottom:16px; }
+  .skill-bar .label { font-size:0.92em; font-weight:600; color:var(--black); margin-bottom:5px; display:block; }
+  .skill-track { background:var(--gray-bg); border:1px solid var(--border); border-radius:3px; height:10px; overflow:hidden; transition:background-color 0.4s ease, border-color 0.4s ease; }
+  .skill-fill { height:100%; background:var(--gold); transition:width 1.2s ease, background-color 0.4s ease; }
+
+  ul.plain { padding-left:20px; }
+  ul.plain li { color:var(--gray-text); font-size:0.95em; margin-bottom:6px; }
+
+  .two-col { display:flex; gap:50px; flex-wrap:wrap; }
+  .two-col .col { flex:1; min-width:240px; }
+
+  /* Footer */
+  footer {
+    text-align:center;
+    padding:36px 20px;
+    background:var(--gray-bg);
+    color:var(--gray-text);
+    border-top:1px solid var(--border);
+    font-size:0.85em;
+    transition:background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Dark/light toggle */
+  #theme-toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--white);
+    border:1.5px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:100;
+    box-shadow:0 4px 12px var(--shadow);
+    transition:background-color 0.4s ease, border-color 0.4s ease, transform 0.2s ease;
+  }
+  #theme-toggle:hover { transform:scale(1.08); }
+  #theme-toggle svg { width:20px; height:20px; fill:var(--gold); transition:fill 0.4s ease; }
+
+  @media(max-width:768px){
+    header h1 { font-size:1.9em; }
+    .header-inner { flex-direction:column; text-align:center; }
+    .button-row { justify-content:center; }
+    #theme-toggle { top:14px; right:14px; width:38px; height:38px; }
+  }
+</style>
+<script>
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('cv-theme'); } catch(e) {}
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
+</head>
+
+<body>
+<noscript><style>.card{opacity:1!important;transform:none!important;} .skill-fill{transition:none!important;}</style></noscript>
+
+<button id="theme-toggle" aria-label="Schakel tussen licht en donker thema" title="Licht / donker thema">
+  <svg id="icon-moon" viewBox="0 0 24 24"><path d="M21.75 15a9.72 9.72 0 0 1-2.75.4c-5.4 0-9.75-4.37-9.75-9.75 0-1 .15-1.95.43-2.85A9.75 9.75 0 1 0 21.75 15z"/></svg>
+  <svg id="icon-sun" viewBox="0 0 24 24" style="display:none;"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zM4.2 4.2a1 1 0 0 1 1.4 0l1.4 1.4a1 1 0 1 1-1.4 1.4L4.2 5.6a1 1 0 0 1 0-1.4zm12.8 12.8a1 1 0 0 1 1.4 0l1.4 1.4a1 1 0 1 1-1.4 1.4l-1.4-1.4a1 1 0 0 1 0-1.4zM1 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zM4.2 19.8a1 1 0 0 1 0-1.4l1.4-1.4a1 1 0 1 1 1.4 1.4l-1.4 1.4a1 1 0 0 1-1.4 0zM16.99 7a1 1 0 0 1-1.4 0l-1.4-1.4a1 1 0 1 1 1.4-1.4l1.4 1.4a1 1 0 0 1 0 1.4z"/></svg>
+</button>
+
+<header>
+  <div class="header-inner">
+    <div class="photo-frame">
+      <!-- Placeholder-icoon. Vervang dit hele <div class="photo-frame">...</div> blok
+           door <img src="jouw-foto.jpg" alt="Aimane Zougagh" class="photo-img"> zodra je een foto hebt. -->
+      <svg viewBox="0 0 24 24" fill="#9a9690" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Aimane Zougagh</h1>
+      <div class="role">Servicedesk &amp; IT Support</div>
+      <p class="tagline">Welbespraakte werkkracht die gedreven is om successen te boeken. Kan uitstekend samenwerken en heeft aan een half woord genoeg.</p>
+      <div class="button-row">
+        <a href="#werkervaring" class="button primary">Bekijk Werkervaring</a>
+        <a href="Aimane-Zougagh-CV.pdf" class="button secondary" download>⬇ Download CV</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="werkervaring">
+  <h2>Werkervaring</h2>
+
+  <div class="card">
+    <h3>Servicedesk medewerker — Stafkantoor Aafje Kralingse Zoom</h3>
+    <div class="meta">23-02-2026 – 03-07-2026 · Rotterdam</div>
+    <ul>
+      <li>Medewerkers geholpen aan de balie.</li>
+      <li>Telefoongesprekken beantwoord en tickets verwerkt.</li>
+      <li>Laptops en telefoons klaargezet voor gebruik.</li>
+      <li>Ondersteuning geboden bij Werkbeheer op locatie.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Servicedesk medewerker — Stafkantoor Aafje Kralingse Zoom</h3>
+    <div class="meta">09/2024 – 02/2025 · Rotterdam</div>
+    <ul>
+      <li>Medewerkers geholpen aan de balie.</li>
+      <li>Telefoongesprekken beantwoord en tickets verwerkt.</li>
+      <li>Laptops en telefoons klaargezet voor gebruik.</li>
+      <li>Ondersteuning geboden bij Werkbeheer op locatie.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Horecamedewerker — PwC</h3>
+    <div class="meta">01/2019 – 01/2020 · Rotterdam</div>
+    <ul>
+      <li>Klaarmaken en uitserveren van dranken en kleine bestellingen.</li>
+      <li>Bedienen van spoel- en afwasmachines volgens voorschriften.</li>
+      <li>Netjes houden van de keuken en het serviesgoed.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Bakker — Banketbakkerij</h3>
+    <div class="meta">01/2018 – 08/2018 · Rotterdam</div>
+    <ul>
+      <li>Registreren en tijdig bestellen van bestellingen.</li>
+      <li>Inkopen van ingrediënten en contact met leveranciers.</li>
+      <li>Roosters maken voor personeelsbezetting.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Bakker — Ammerlaan Retail</h3>
+    <div class="meta">01/2017 – 08/2017 · Rotterdam</div>
+    <ul>
+      <li>Bereiden van deeg en bakken van brood.</li>
+      <li>Zorgen voor een schone werkplek.</li>
+      <li>Openen en afsluiten van de bakkerij.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="opleiding">
+  <h2>Opleidingen</h2>
+
+  <div class="card">
+    <h3>Allround IT Systems and Devices, MBO 3</h3>
+    <div class="meta">Techniek College, Prins Alexanderlaan · 08/2023 – 06/2026</div>
+    <span class="status-behaald">✓ Diploma behaald</span>
+  </div>
+  <div class="card">
+    <h3>Kok, MBO 2</h3>
+    <div class="meta">Albeda College, Rotterdam · 09/2021 – 06/2022</div>
+    <span class="status-behaald">✓ Diploma behaald</span>
+  </div>
+  <div class="card">
+    <h3>Assistent Horeca & Voeding, MBO 1</h3>
+    <div class="meta">Albeda College, Rotterdam · 09/2022 – 06/2023</div>
+    <span class="status-behaald">✓ Diploma behaald</span>
+  </div>
+</section>
+
+<section id="vaardigheden">
+  <div class="two-col">
+    <div class="col">
+      <h2>Vaardigheden</h2>
+      <div class="skill-bar">
+        <span class="label">Horeca/Keuken</span>
+        <div class="skill-track"><div class="skill-fill" style="width:90%;" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <span class="label">Stressbestendig & Flexibel</span>
+        <div class="skill-track"><div class="skill-fill" style="width:85%;" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <span class="label">Word, Excel, PowerPoint</span>
+        <div class="skill-track"><div class="skill-fill" style="width:80%;" data-width="80%"></div></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Talen</h2>
+      <ul class="plain">
+        <li>Nederlands: Eerste taal</li>
+        <li>Engels: A2 (Elementair)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="certificaten">
+  <div class="two-col">
+    <div class="col">
+      <h2>Certificaten</h2>
+      <ul class="plain">
+        <li>HACCP-certificaat</li>
+        <li>Cisco IT Essentials 7</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h2>Hobby's</h2>
+      <ul class="plain">
+        <li>Gamen</li>
+        <li>Sporten</li>
+        <li>Afspreken met vrienden</li>
+        <li>Knutselen aan computers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contactgegevens</h2>
+  <p>📧 <a href="mailto:aimanszougagh31@gmail.com">aimanszougagh31@gmail.com</a></p>
+  <p>📞 0685236902</p>
+  <p>🏠 Demeterpad 4, Nederland</p>
+</section>
+
+<footer>
+  &copy; 2025 Aimane Zougagh — Curriculum Vitae
+</footer>
+
+<script>
+  // Thema-toggle (donker/licht)
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    var moon = document.getElementById('icon-moon');
+    var sun = document.getElementById('icon-sun');
+
+    function updateIcon(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      moon.style.display = isDark ? 'none' : 'block';
+      sun.style.display = isDark ? 'block' : 'none';
+    }
+    updateIcon();
+
+    btn.addEventListener('click', function(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        try { localStorage.setItem('cv-theme', 'light'); } catch(e) {}
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('cv-theme', 'dark'); } catch(e) {}
+      }
+      updateIcon();
+    });
+  })();
+
+  // Subtiele inschuif-animatie bij scrollen
+  document.addEventListener("DOMContentLoaded", function(){
+    var cards = document.querySelectorAll('.card');
+    if (window.IntersectionObserver) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold:0.15 });
+      cards.forEach(function(card){ observer.observe(card); });
+    } else {
+      cards.forEach(function(card){ card.classList.add('visible'); });
+    }
+
+    // Skill-balken vullen met een vloeiende animatie
+    var fills = document.querySelectorAll('.skill-fill');
+    fills.forEach(function(fill){
+      var target = fill.getAttribute('data-width') || fill.style.width;
+      fill.style.width = '0%';
+      setTimeout(function(){ fill.style.width = target; }, 100);
+    });
+  });
+</script>
+</body>
+</html>
